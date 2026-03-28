@@ -102,13 +102,18 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      const data = new FormData(contactForm);
+      // Build URL-encoded body — Netlify Forms requires this format
+      const formData = new FormData(contactForm);
+      const encoded = new URLSearchParams();
+      formData.forEach(function (value, key) {
+        encoded.append(key, value);
+      });
 
       try {
-        const response = await fetch('/', {
+        const response = await fetch(window.location.pathname, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(data).toString()
+          body: encoded.toString()
         });
 
         if (response.ok) {
@@ -116,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const success = document.getElementById('formSuccess');
           if (success) success.style.display = 'block';
         } else {
-          alert('Submission failed. Please try again or email us directly at info@osaexportsway.com');
+          alert('Submission failed (status ' + response.status + '). Please email us directly at info@osaexportsway.com');
           btn.innerHTML = originalHTML;
           btn.disabled = false;
         }
