@@ -240,7 +240,9 @@
           <div class="fade-up">
             <div class="contact-form-wrap">
               <div class="form-title">Send a Product Enquiry</div>
-              <form id="contactForm" novalidate>
+              <form id="contactForm" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                <input type="hidden" name="form-name" value="enquiry" />
+                <input type="hidden" name="bot-field" style="display:none" />
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="fname">First Name *</label>

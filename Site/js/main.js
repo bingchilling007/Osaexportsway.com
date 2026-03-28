@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* ── Contact form submission (Formspree) ── */
+  /* ── Contact form submission (Netlify Forms) ── */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async function (e) {
@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = new FormData(contactForm);
 
       try {
-        const response = await fetch('https://formspree.io/f/xblybpll', {
+        const response = await fetch('/', {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
         });
 
         if (response.ok) {
@@ -116,10 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const success = document.getElementById('formSuccess');
           if (success) success.style.display = 'block';
         } else {
-          const json = await response.json().catch(() => ({}));
-          const msg = (json.errors || []).map(function(err){ return err.message; }).join(', ')
-                      || 'Submission failed. Please try again or email us directly.';
-          alert(msg);
+          alert('Submission failed. Please try again or email us directly at info@osaexportsway.com');
           btn.innerHTML = originalHTML;
           btn.disabled = false;
         }
