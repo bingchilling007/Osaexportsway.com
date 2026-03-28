@@ -92,43 +92,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* ── Contact form submission (Netlify Forms) ── */
+  /* ── Contact form — loading state only (Netlify handles submission natively) ── */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
+    contactForm.addEventListener('submit', function () {
       const btn = contactForm.querySelector('.btn-submit');
-      const originalHTML = btn.innerHTML;
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-
-      // Build URL-encoded body — Netlify Forms requires this format
-      const formData = new FormData(contactForm);
-      const encoded = new URLSearchParams();
-      formData.forEach(function (value, key) {
-        encoded.append(key, value);
-      });
-
-      try {
-        const response = await fetch(window.location.pathname, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encoded.toString()
-        });
-
-        if (response.ok) {
-          contactForm.style.display = 'none';
-          const success = document.getElementById('formSuccess');
-          if (success) success.style.display = 'block';
-        } else {
-          alert('Submission failed (status ' + response.status + '). Please email us directly at info@osaexportsway.com');
-          btn.innerHTML = originalHTML;
-          btn.disabled = false;
-        }
-      } catch (err) {
-        alert('Network error. Please check your connection and try again.');
-        btn.innerHTML = originalHTML;
-        btn.disabled = false;
+      if (btn) {
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
       }
     });
   }

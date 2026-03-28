@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enquiry Sent — OSA Exports Way Pvt Limited</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPS2VGWWHJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NPS2VGWWHJ');
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .thankyou-section {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dark);
+        padding: 60px 24px;
+      }
+      .thankyou-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 56px 48px;
+        max-width: 560px;
+        width: 100%;
+        text-align: center;
+      }
+      .thankyou-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .thankyou-title {
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 16px;
+      }
+      .thankyou-subtitle {
+        color: var(--light-gray);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 32px;
+      }
+      .thankyou-accent {
+        display: inline-block;
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .thankyou-divider {
+        width: 48px;
+        height: 2px;
+        background: var(--gold);
+        margin: 0 auto 28px;
+        border-radius: 2px;
+      }
+      .thankyou-cta-row {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .countdown-note {
+        font-size: 0.8rem;
+        color: var(--gray);
+        margin-top: 24px;
+      }
+      @media (max-width: 540px) {
+        .thankyou-card { padding: 36px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <span class="nav-logo-main"><span>OSA</span> Exports Way</span>
+          <span class="nav-logo-sub">Pvt. Limited · Est. 2012</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="logistics.html">Logistics</a></li>
+          <li><a href="certifications.html">Certifications</a></li>
+          <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="thankyou-section">
+      <div class="thankyou-card">
+        <span class="thankyou-icon">✅</span>
+        <div class="thankyou-title">Enquiry Sent Successfully!</div>
+        <div class="thankyou-divider"></div>
+        <p class="thankyou-subtitle">
+          Thank you for reaching out to <span class="thankyou-accent">OSA Exports Way</span>.<br />
+          Our export team will review your enquiry and respond within
+          <strong style="color: var(--white)">one business day</strong>.
+        </p>
+        <div class="thankyou-cta-row">
+          <a href="contact.html" class="btn btn-primary">Send Another Enquiry</a>
+          <a href="index.html" class="btn btn-outline">Back to Home</a>
+        </div>
+        <p class="countdown-note" id="countdownNote"></p>
+      </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+      // Auto-redirect back to home after 12 seconds
+      let seconds = 12;
+      const note = document.getElementById('countdownNote');
+      if (note) {
+        note.textContent = 'Redirecting to home in ' + seconds + 's…';
+        const timer = setInterval(function () {
+          seconds--;
+          if (seconds <= 0) {
+            clearInterval(timer);
+            window.location.href = 'index.html';
+          } else {
+            note.textContent = 'Redirecting to home in ' + seconds + 's…';
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
